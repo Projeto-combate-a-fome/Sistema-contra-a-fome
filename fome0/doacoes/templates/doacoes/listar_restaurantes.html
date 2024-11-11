@@ -1,0 +1,27 @@
+{% extends 'doacoes/base.html' %}
+
+{% block title %}Lista de Restaurantes Parceiros{% endblock %}
+
+{% block content %}
+<h2>Lista de Restaurantes Parceiros</h2>
+<ul>
+    {% for restaurante in restaurantes %}
+    <li>
+        <strong>{{ restaurante.nome }}</strong><br>
+        Email: {{ restaurante.email }}<br>
+        Telefone: {{ restaurante.telefone }}<br>
+        Endereço: {{ restaurante.localizacao }}<br>
+        <a href="{% url 'add_donation' restaurante.id %}">Cadastrar Alimento</a><br>
+        <a href="{% url 'list_donation' restaurante.id %}">Ver Doações</a><br>
+        <form action="{% url 'excluir_restaurante' restaurante.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Excluir</button>
+        </form>
+    </li>
+    {% empty %}
+    <li>Nenhum restaurante encontrado.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'criar_restaurante' %}">Adicionar novo restaurante</a>
+{% endblock %}
+
