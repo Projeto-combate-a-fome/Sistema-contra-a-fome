@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fome Zer0{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="{% static 'images/logoFomeZero.png' %}" alt="Logo Fome Zer0" class="logo">
+                <h1>Fome Zer0</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'listar_restaurantes' %}">Restaurantes</a></li>
+                    <li><a href="{% url 'criar_restaurante' %}">Cadastrar Restaurante</a></li>
+                    <li><a href="http://127.0.0.1:5500/Front-end/pag-conscientização/Index.html">Teste</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Sistema Contra a Fome - Fome Zer0 | São José dos Campos, SP</p>
+        <a href="https://www.sjc.sp.gov.br" target="_blank">Saiba mais sobre São José dos Campos</a>
+    </footer>
+</body>
+</html>
